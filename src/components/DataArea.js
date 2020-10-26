@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "./DataTable";
+import Nav from "./nav";
 import API from "../utils/api";
+import "../styles/DataArea.css";
+import DataAreaContext from "../utils/DataAreaContext";
 
 const DataArea = () => {
     const [developerState, setDeveloperState] = useState({
@@ -29,7 +32,7 @@ const DataArea = () => {
         }
         
         const compareFnc = (a, b) => {
-            if (currentOrder = "ascend") {
+            if (currentOrder === "ascend") {
                 if (a[heading] === undefined) {
                     return -1;
                 }
@@ -58,18 +61,16 @@ const DataArea = () => {
             }
         };
 
-        const sortUsers = developerState.filteredUsers.sort;
+        const sortedUsers = developerState.filteredUsers.sort(compareFnc);
+        const updatedHeadings = developerState.headings.map(elem => {
+            elem.order = elem.name === heading ? currentOrder : elem.order;
+            return elem;
+        });
 
         setDeveloperState({
             ...developerState,
-            filteredUsers: sortUsers,
+            filteredUsers: sortedUsers,
+            headings: updatedHeadings
         });
-    };
-
-    const handleSearchChange = event => {
-        let values = item.name.first.toLowerCase() + "" + item.name.last.toLowerCase();
-        if (values.indexOf(filter.toLowerCase()) !== -1) {
-            return item
-        };
-    
+    };   
 }
