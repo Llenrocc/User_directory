@@ -16,5 +16,40 @@ const DataArea = () => {
         ]
     });
 
-    
+    const handleSort = heading => {
+        let currentOrder = developerState.headings
+            .filter(elem => elem.name === heading)
+            .map(elem => elem.order)
+            .toString();
+
+        if (currentOrder === "descend") {
+            currentOrder = "ascend";
+        } else {
+            currentOrder = "descend";
+        }
+        
+        const compareFnc = (a, b) => {
+            if (currentOrder = "ascend") {
+                if (a[heading] === undefined) {
+                    return -1;
+                }
+                else if (heading === "name") {
+                    return a[heading].first.localeCompare(b[heading].first);
+                }else if (heading === "dob") {
+                    return a[heading].age - b[heading].age;
+                }else {
+                    return a[heading].localeCompare(b[heading]);
+                }
+            } else {
+                // account for the missing values
+                if (a[heading] === undefined) {
+                    return -1;
+                }
+
+                else if (heading === "name") {
+                    return b[heading].first.localeCompare(a[heading].first);
+                }
+            }
+        }
+    }
 }
