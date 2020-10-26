@@ -51,9 +51,25 @@ const DataArea = () => {
                 else if (heading === "name") {
                     return b[heading].first.localeCompare(a[heading].first);
                 }else if (heading === "dob") {
-                    return 
+                    return b[heading].age - a[heading].age;
+                } else {
+                    return b[heading].localeCompare(a[heading]);
                 }
             }
-        }
-    }
+        };
+
+        const sortUsers = developerState.filteredUsers.sort;
+
+        setDeveloperState({
+            ...developerState,
+            filteredUsers: sortUsers,
+        });
+    };
+
+    const handleSearchChange = event => {
+        let values = item.name.first.toLowerCase() + "" + item.name.last.toLowerCase();
+        if (values.indexOf(filter.toLowerCase()) !== -1) {
+            return item
+        };
+    
 }
