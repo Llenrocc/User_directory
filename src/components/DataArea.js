@@ -56,34 +56,28 @@ const DataArea = () => {
         }
 
         const sortedUsers = developerState.filteredUsers.sort(compareFnc);
-        const updatedHeadings = developerState.headings.map(elem => {
-            elem.order = elem.name === heading ? currentOrder : elem.order;
-            return elem;
-        });
-
-        setDeveloperState({
+        
+            setDeveloperState({
             ...developerState,
-            filteredUsers: sortedUsers,
-            headings: updatedHeadings
+            filteredUsers: sortedUsers
         });
     };  
     
     const handleSearchChange = event => {
         const filter = event.target.value;
         const filteredList = developerState.users.filter(item => {
-          let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
-          console.log(filter, values)
-        if(values.indexOf(filter.toLowerCase()) !== -1){
-            return item
-        };
+          let values = item.name.first.toLowerCase();
+          return values.indexOf(filter.toLowerCase()) !== -1;  
+        });
         
 
-        setDeveloperState({ ...developerState, filteredUsers: filteredList });
+        setDeveloperState({ 
+            ...developerState, 
+            filteredUsers: filteredList });
     };
 
     useEffect(() => {
         API.getUsers().then(results => {
-          console.log(results.data.results);
           setDeveloperState({
             ...developerState,
             users: results.data.results,
@@ -93,13 +87,18 @@ const DataArea = () => {
       }, []);
 
       return (
-          <DataAreaContext.Provider value={{ developerState, handleSearchChange, handleSort }} >
-              <Nav />
-              <div className="data-area">
-                  { developerState.filteredUsers.length > 0 ? <DataTable /> : <div></div>}
-              </div>
-          </DataAreaContext.Provider>
+          <DataAreaContext.Provider
+            value={{ developerState, handleSearchChange, handleSort }} 
+            >
+                <Nav />
+                <div className="data-area">
+                    { developerState.filteredUsers.length > 0 
+                    ? <DataTable /> 
+                    : <div></div> 
+                    }
+                </div>
+            </DataAreaContext.Provider>
       );
-      };
-      
-      export default DataArea;
+                }
+
+                export default DataArea;
