@@ -14,7 +14,7 @@ const DataTable = () => {
                         { context.developerState.headings.map(({ name, width }) => {
                             return (
                                 <th className="col" key={name} style={{ width }} onClick={() => {
-                                    context.handleSort(name);
+                                    context.handleSort(name.toLowerCase());
                                 }}
                                 >
                                     { name }
