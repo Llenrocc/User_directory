@@ -15,7 +15,7 @@ Employee Directory is an easy to use React application that allows the user to c
 
 I think I have written all the code that is needed. However I am receiving this error message when I run `npm start`.
 
-```src/utils/API.js
-  Line 3:1:  Assign object to a variable before exporting as module default  import/no-anonymous-default-export```
+"src/utils/API.js
+  Line 3:1:  Assign object to a variable before exporting as module default  import/no-anonymous-default-export"
 
 I have tried troubleshooting with google etc, and I am not just not 100% sure on what is exactly that i need to fix. I have seen online, similar code written, and I am not sure what i am missing. The code is under Master branch in Github, not main. 
