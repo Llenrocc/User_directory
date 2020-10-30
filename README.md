@@ -1,3 +1,21 @@
+# Employee Directory
+
+Employee Directory is an easy to use React application that allows the user to create and populate random users and store them in a directory. You are able to search by Name, email, and DOB.
+
+## Directions
+
+- Open up terminal, and create new directory (mkdir).  
+- Once the new directory has been created, clone (cope and paste repo link) the repo into your directory.
+- 
+
+
+
+src/utils/API.js
+  Line 3:1:  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
